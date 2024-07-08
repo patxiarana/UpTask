@@ -18,7 +18,7 @@
             </div>
 
 
-        <form action="/" class="formulario" method="POST">
+        <form action="/crear" class="formulario" method="POST">
             <div class="campo">
               <label for="email">Email</label>
               <input 
@@ -47,7 +47,7 @@
               name="password2"
              />
             </div>
-            <input type="submit" class="boton" value="iniciar sesión">
+            <input type="submit" class="boton" value="Crear Cuenta">
         </form>
         <div class="acciones">
             <a href="/">¿Ya tienes cuenta? Iniciar Sesión.</a>
