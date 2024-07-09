@@ -6,7 +6,7 @@
 
 
 
-        <form action="/" class="formulario" method="POST">
+        <form action="/crear" class="formulario" method="POST">
             <div class="campo">
               <label for="nombre">Nombre</label>
               <input 
@@ -14,11 +14,9 @@
               id="nombre"
               placeholder="Tu Nombre.."
               name="nombre"
+              value="<?php echo $usuario->nombre ; ?>"
                />
             </div>
-
-
-        <form action="/crear" class="formulario" method="POST">
             <div class="campo">
               <label for="email">Email</label>
               <input 
@@ -26,7 +24,7 @@
               id="email"
               placeholder="Tu Email.."
               name="email"
-
+              value="<?php echo $usuario->email ; ?>"
               />
             </div>
             <div class="campo">
