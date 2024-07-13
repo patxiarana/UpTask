@@ -92,21 +92,26 @@ class LoginController {
                 //encontre al usuario
 
               //Generar un nuevo toke
-
+               $usuario->crearToken() ; 
+               unset($usuario->password2) ; 
 
               //Actualizar el usuario 
+               $usuario->guardar() ;
 
               //Enviar el email 
-
+                
 
               //Imprimir la alerta 
+                Usuario::setAlerta('exito','Hemos enviado las instrucciones a tu email') ; 
+              
             } else {
-                Usuario::setAlerta('error', 'El Email no se encuentra registrado') ;
-                $alertas = Usuario::getAlertas() ; 
+               Usuario::setAlerta('error', 'El Email no se encuentra registrado') ;
+    
              }
 
            }
         }
+        $alertas = Usuario::getAlertas() ; 
         //Muestra la vista 
         $router->render('auth/olvide', [
             'titulo' => 'Olvide Mi Password',
