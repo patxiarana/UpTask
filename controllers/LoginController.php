@@ -99,9 +99,9 @@ class LoginController {
                $usuario->guardar() ;
 
               //Enviar el email 
-                
-
-              //Imprimir la alerta 
+                $email = new Email($usuario->email,$usuario->nombre,$usuario->token) ; 
+                $email->enviarInstrucciones(); 
+              //Imprimir la alerta
                 Usuario::setAlerta('exito','Hemos enviado las instrucciones a tu email') ; 
               
             } else {
