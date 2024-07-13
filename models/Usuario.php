@@ -60,6 +60,17 @@ class Usuario extends ActiveRecord {
         }
         return self::$alertas ; 
     }
+    //Validar password 
+
+    public function validarPassword() { 
+        if(!$this->password) {
+            self::$alertas['error'][] = 'El Password del Usuario es Obligatorio' ; 
+        }
+        if(strlen($this->password) < 6) {
+            self::$alertas['error'][] = 'El Password debe contener al menos 6 caracteres' ; 
+        }
+        return self::$alertas ;
+    }
 
 
      //Hashea el password 
@@ -71,6 +82,6 @@ class Usuario extends ActiveRecord {
     public function crearToken() {
         $this->token = uniqid() ; 
     }
-
+  
 
 }
