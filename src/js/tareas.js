@@ -7,28 +7,28 @@
 
 
     function mostrarFormulario() {
-       const modal = document.createElement('DIV');
-       modal.classList.add('modal');
-       modal.innerHTML = `
-          <form class="formulario nueva-tarea">
-          <legend>Añade una Nueva Tarea</legend>
-          <div class="campo">
-          <label>Tarea</label>
-          <input 
-            type="text"
-            id="tarea"
-            name="tarea"
-            placeholder="Ingresa una tarea"
-            />
-          </div>
-          <div class="opciones">
-          <input type="submit" 
-          class="submit-nueva-tarea"
-          value="Añadir tarea"/>
-          <button type="button" class="cerrar-modal">Cancelar</button>
-          </div>
-          </form>
-          `;
+      const modal = document.createElement('DIV');
+      modal.classList.add('modal');
+      modal.innerHTML = `
+         <form class="formulario nueva-tarea">
+         <legend>Añade una Nueva Tarea</legend>
+         <div class="campo">
+         <label>Tarea</label>
+         <input 
+           type="text"
+           id="tarea"
+           name="tarea"
+           placeholder="Ingresa una tarea"
+           />
+         </div>
+         <div class="opciones">
+         <input type="submit" 
+         class="submit-nueva-tarea"
+         value="Añadir tarea"/>
+         <button type="button" class="cerrar-modal">Cancelar</button>
+         </div>
+         </form>
+         `;
 
 
 
@@ -48,7 +48,7 @@
         
         } 
         if(e.target.classList.contains('submit-nueva-tarea')) {
-            submitFormularioNuevaTarea();
+          submitFormularioNuevaTarea();
         }
        })
 
@@ -63,9 +63,10 @@
          mostrarAlerta('El nombre de la tarea es obligatorio', 'error', document.querySelector('.formulario legend')); 
 
          return ; 
-        }
+        } 
 
         agregarTarea(tarea);
+             
     }
     //Muestra un mensaje en al interface 
     function mostrarAlerta(mensaje , tipo, referencia) { 
@@ -89,7 +90,20 @@
       
     }
   //Consultar el servidor para añadir una tarea al proyecto actual 
-    function agregarTarea(tarea) { 
+  async  function agregarTarea(tarea) { 
+        //Construir la peticion 
+        const datos = new FormData();
+        datos.append('nombre','patxi')
 
+        try {
+          const url = 'http://localhost:3000/api/tarea';
+          const respuesta = await fetch(url, {
+            method: 'POST',
+           body:datos ,
+          });
+          console.log(respuesta);
+        } catch (error) {
+          console.log(error)
+        }
     }
 })();
