@@ -93,7 +93,7 @@
   async  function agregarTarea(tarea) { 
         //Construir la peticion 
         const datos = new FormData();
-        datos.append('nombre','patxi')
+        datos.append('nombre',tarea)
 
         try {
           const url = 'http://localhost:3000/api/tarea';
@@ -101,6 +101,7 @@
             method: 'POST',
            body:datos ,
           });
+          const resultado = await respuesta.json; 
           console.log(respuesta);
         } catch (error) {
           console.log(error)
